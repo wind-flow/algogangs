@@ -1,0 +1,276 @@
+/*
+ Theme Name:   GeneratePress Child
+ Theme URI:    https://generatepress.com
+ Description:  Default GeneratePress child theme
+ Author:       Tom Usborne
+ Author URI:   https://tomusborne.com
+ Template:     generatepress
+ Version:      0.6-brand
+*/
+
+/* 전체 컨테이너 너비 확장 */
+@media (min-width: 1025px) {
+  /* 전체 레이아웃 wrapper */
+  .container.grid-container {
+    max-width: 1260px !important;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* 본문 + 사이드바 2단 grid 레이아웃 */
+  .generate-columns-container {
+    display: grid !important;
+    grid-template-columns: 1000px 260px !important;  /* 본문+사이드바 포함 총 1260px */
+    column-gap: 0 !important;
+    box-sizing: border-box;
+  }
+
+  /* 본문 wrapper */
+  #primary.content-area {
+    width: 1000px !important; /* 본문 전체 크기 (내용 + 여백) */
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  /* 아티클 내부 전체 */
+  .inside-article {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* 본문 내용: 900px 고정, 가운데 정렬 */
+  .entry-content {
+    width: 900px !important;           /* 핵심: 본문 내용 폭 고정 */
+    margin-left: 0px !important;      /* 좌우 여백 = (1000 - 900)/2 */
+    margin-right: 0px !important;
+    box-sizing: border-box;
+  }
+
+  /* 내부 요소들 */
+  .entry-content > * {
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  /* 사이드바 */
+  #right-sidebar {
+    width: 360px !important;
+    box-sizing: border-box;
+  }
+}
+
+/* 검색 입력창 높이 및 글자 크기 조정 */
+.widget_search input[type="search"] {
+  height: 32px !important;             /* 전체 입력창 높이 조절 */
+  padding: 4px 8px !important;         /* 위아래/좌우 여백 */
+  font-size: 15px !important;          /* 텍스트 크기 */
+  line-height: 1.4 !important;         /* 줄 높이로 정렬 */
+  box-sizing: border-box;              /* 패딩 포함 너비 계산 */
+}
+
+/* 검색 버튼(<button>) 높이 및 글자 크기 정리 */
+.widget_search button {
+  height: 32px !important;             /* 버튼 높이 입력창과 동일하게 */
+  padding: 0 12px !important;          /* 좌우 여백만 설정 */
+  font-size: 15px !important;          /* 글자 크기 동일하게 */
+  line-height: 1.4 !important;         /* 줄 높이 */
+  white-space: nowrap !important;      /* 버튼 안 텍스트 줄바꿈 방지 */
+  box-sizing: border-box;              /* 너비 계산 방식 통일 */
+  font-family: "Noto Sans KR", sans-serif; /* 한글 폰트 명시 */
+}
+
+/* 기본 상태에서는 밑줄 제거 */
+a {
+  text-decoration: none;
+}
+
+/* 마우스 오버 시 밑줄 표시 */
+a:hover {
+  text-decoration: underline;
+}
+
+/* ------------------------------
+   헤딩(h2, h3 등) 크기 조정
+------------------------------ */
+h1 {
+  font-size: 28px;
+  line-height: 1.4;
+  margin-bottom: 1em;
+}
+h2 {
+  font-size: 22px;
+  line-height: 1.4;
+  margin-bottom: 1em;
+}
+h3 {
+  font-size: 18px;
+  line-height: 1.4;
+  margin-bottom: 0.8em;
+}
+
+/* ------------------------------
+   <code> 태그에 코드 스타일 적용
+------------------------------ */
+code {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #f4f4f4;
+  padding: 2px 4px;
+  font-size: 14px;
+  color: #c7254e;
+  border-radius: 4px;
+}
+
+.related-posts {
+	border: 2px solid #e9e9e9;
+	border-radius: 20px;
+	padding: 20px;
+}
+/* ===== 알고갱즈 다크 테마 + 가독성 개편 (2026-07-10, claude) ===== */
+:root {
+  --ag-bg: #131316;
+  --ag-surface: #1a1a19;
+  --ag-card: #1e1e22;
+  --ag-border: #2e2e33;
+  --ag-ink: #e8e8e4;
+  --ag-ink-strong: #ffffff;
+  --ag-muted: #a9a9a2;
+  --ag-accent: #3987e5;
+  --ag-accent-soft: #6aa9f0;
+}
+
+body {
+  background: var(--ag-bg) !important;
+  color: var(--ag-ink);
+  font-size: 17px;
+  line-height: 1.85;
+  letter-spacing: -0.01em;
+  word-break: keep-all; /* 한글 어절 단위 줄바꿈 */
+}
+
+/* 헤더/네비/푸터 */
+.site-header, .main-navigation, .site-info { background: var(--ag-surface) !important; }
+.main-title a, .site-header a, .main-navigation a, .site-info { color: var(--ag-ink-strong) !important; }
+.site-description { color: var(--ag-muted) !important; }
+.main-navigation .main-nav ul li a { color: var(--ag-ink); }
+.main-navigation .main-nav ul li a:hover { color: var(--ag-accent-soft); }
+
+/* 본문 가독성: 글줄은 좁게, 이미지는 넓게 */
+.entry-content > p, .entry-content > ul, .entry-content > ol,
+.entry-content > h2, .entry-content > h3, .entry-content > blockquote, .entry-content > table {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.entry-content p { margin-bottom: 1.5em; }
+.entry-content li { margin-bottom: 0.55em; }
+.entry-content h2 {
+  color: var(--ag-ink-strong);
+  font-size: 1.45em;
+  margin: 2.4em auto 0.9em;
+  padding-bottom: 0.4em;
+  border-bottom: 1px solid var(--ag-border);
+}
+.entry-content h3 { color: var(--ag-ink-strong); font-size: 1.15em; margin: 1.9em auto 0.7em; }
+.entry-title, .entry-title a, h1 { color: var(--ag-ink-strong) !important; }
+.entry-meta, .posted-on, .cat-links { color: var(--ag-muted) !important; }
+
+a { color: var(--ag-accent-soft); }
+a:hover { color: #8fc0f5; }
+
+/* 인용(면책 고지 등) */
+.entry-content blockquote {
+  background: var(--ag-card);
+  border-left: 3px solid var(--ag-accent);
+  border-radius: 6px;
+  padding: 1em 1.3em;
+  color: var(--ag-muted);
+  font-size: 0.92em;
+  line-height: 1.75;
+}
+
+/* 차트 이미지: 카드 프레임 + 본문보다 넓게 */
+.entry-content .wp-block-image, .entry-content figure {
+  max-width: 980px;
+  margin: 2em auto;
+}
+.entry-content figure img {
+  border: 1px solid var(--ag-border);
+  border-radius: 10px;
+  background: var(--ag-surface);
+}
+
+/* 표 */
+.entry-content table { border-collapse: collapse; font-size: 0.95em; }
+.entry-content th, .entry-content td { border: 1px solid var(--ag-border); padding: 0.5em 0.8em; }
+.entry-content th { background: var(--ag-card); color: var(--ag-ink-strong); }
+
+/* 홈 카드/위젯/사이드바 */
+.custom-post-box, .inside-article, .sidebar .widget, .comments-area {
+  background: var(--ag-card) !important;
+  border: 1px solid var(--ag-border) !important;
+  border-radius: 10px;
+  color: var(--ag-ink);
+}
+.sidebar .widget .widget-title { color: var(--ag-ink-strong); }
+.custom-post-box a, .sidebar .widget a { color: var(--ag-ink); }
+.custom-post-box a:hover { color: var(--ag-accent-soft); }
+.custom-post-box img { border-radius: 8px; }
+
+/* 코드 */
+.entry-content code, .entry-content pre {
+  background: #26262b; color: #e3e3de; border-radius: 6px;
+}
+.entry-content pre { padding: 1em 1.2em; overflow-x: auto; }
+.entry-content code { padding: 0.15em 0.4em; }
+
+/* ===== 브랜드 패스: 워드마크 + 홈 아카이브 레이아웃 (designa 제안, claude 적용) ===== */
+.site-header .custom-logo { max-height: 46px; width: auto; }
+.site-header .main-title { display: none; } /* 워드마크가 사이트명 대체 */
+
+.home .custom-post-box {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 20px;
+  padding: 22px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  transition: border-color 0.15s ease;
+}
+@media (max-width: 700px) {
+  .home .custom-post-box { grid-template-columns: 1fr; }
+}
+.home .custom-post-box:hover { border-color: var(--ag-accent); }
+.home .custom-post-box .entry-title, .home .custom-post-box h2 {
+  font-size: 1.28rem;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin: 0.2em 0 0.4em;
+  border: none;
+  padding: 0;
+}
+.home .custom-post-box .entry-meta, .home .custom-post-box .post-meta {
+  color: var(--ag-muted);
+  font-size: 0.85rem;
+}
+.home .sidebar .widget { border-radius: 16px; padding: 18px 20px; }
+.home .sidebar .widget-title {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ag-muted);
+}
+
+/* 로고 크기 강제 (GP .site-logo 래퍼 대응) */
+.site-header .site-logo img,
+.site-header img.custom-logo,
+.site-header .header-image {
+  max-height: 48px !important;
+  height: 48px;
+  width: auto !important;
+}
+.site-header .site-logo { display: flex; align-items: center; }
