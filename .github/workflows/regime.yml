@@ -1,0 +1,56 @@
+name: 레짐 대시보드 자동 갱신
+
+on:
+  schedule:
+    - cron: "30 22 * * *"   # 매일 07:30 KST (22:30 UTC) — 미국 지표 발표 후
+  workflow_dispatch: {}       # 수동 실행 버튼
+
+permissions:
+  contents: write
+
+concurrency:
+  group: regime-live
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 한글 폰트 설치
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-nanum
+          rm -rf ~/.cache/matplotlib
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: 의존성 설치
+        run: pip install -q -r pipeline/requirements-ci.txt
+
+      - name: 데이터 수집 · 차트 · 국면판정 · 페이지 생성
+        working-directory: pipeline
+        run: |
+          python fetch_regime.py
+          python dashboard.py
+          python build_live_page.py
+
+      - name: 대시보드 배포 (/live)
+        run: |
+          rm -rf live
+          mkdir -p live
+          cp -R pipeline/build_live/. live/
+          git config user.name "algogangs-bot"
+          git config user.email "bot@algogangs.local"
+          git add -A live pipeline/state.json pipeline/data pipeline/charts
+          if git diff --cached --quiet; then
+            echo "변경 없음"
+          else
+            git commit -m "레짐 대시보드 자동 갱신 $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git pull --rebase --autostash origin main || true
+            git push origin main
+          fi

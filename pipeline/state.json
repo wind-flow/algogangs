@@ -1,0 +1,17 @@
+{
+  "last_dates": {
+    "UNRATE": "2026-06-01",
+    "CPIAUCSL": "2026-05-01",
+    "RSAFS": "2026-05-01",
+    "INDPRO": "2026-05-01",
+    "UMCSENT": "2026-05-01",
+    "A191RL1Q225SBEA": "2026-01-01"
+  },
+  "issue_no": 2,
+  "alerts_active": {
+    "yc_sign": "pos",
+    "unrate_sahm": false,
+    "cpi_5": false,
+    "usdkrw_1600": false
+  }
+}

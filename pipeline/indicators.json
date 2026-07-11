@@ -1,0 +1,22 @@
+{
+  "_comment": "알고갱즈 매크로 레짐 지표 설정. source: fred(키 불필요 CSV) | yahoo(yfinance). transform: none | yoy | ma3. threshold: 차트 기준선. layer: 선행|동행|후행|시장 (대시보드 그룹). good: up|down|none — 레짐에 우호적인 방향(대시보드 화살표 색).",
+  "shading": { "source": "fred", "series": "USREC", "label": "미국 경기침체(NBER)" },
+  "indicators": [
+    { "id": "yield_curve", "source": "fred", "series": "T10Y2Y", "transform": "none", "title": "미국 장단기 금리차 (10Y-2Y)", "short": "금리차 10Y-2Y", "unit": "%p", "threshold": { "value": 0, "label": "역전선" }, "years": 25, "layer": "선행", "good": "up" },
+    { "id": "umcsent", "source": "fred", "series": "UMCSENT", "transform": "none", "title": "미국 소비자심리지수 (미시간대)", "short": "소비자심리", "unit": "", "years": 25, "layer": "선행", "good": "up" },
+    { "id": "hy_spread", "source": "fred", "series": "BAMLH0A0HYM2", "transform": "none", "title": "미국 하이일드 스프레드 (ICE BofA OAS)", "short": "하이일드 스프레드", "unit": "%p", "threshold": { "value": 5, "label": "경계선 5%p" }, "years": 25, "layer": "선행", "good": "down" },
+    { "id": "vix", "source": "fred", "series": "VIXCLS", "transform": "none", "title": "VIX (변동성지수)", "short": "VIX", "unit": "", "threshold": { "value": 30, "label": "공포 구간 30" }, "years": 25, "layer": "선행", "good": "down" },
+    { "id": "indpro_yoy", "source": "fred", "series": "INDPRO", "transform": "yoy", "title": "미국 산업생산 (전년동월비)", "short": "산업생산 YoY", "unit": "%", "threshold": { "value": 0, "label": "0선" }, "years": 25, "layer": "동행", "good": "up" },
+    { "id": "retail_yoy", "source": "fred", "series": "RSAFS", "transform": "yoy", "title": "미국 소매판매 (전년동월비)", "short": "소매판매 YoY", "unit": "%", "threshold": { "value": 0, "label": "0선" }, "years": 25, "layer": "동행", "good": "up" },
+    { "id": "unrate", "source": "fred", "series": "UNRATE", "transform": "none", "title": "미국 실업률", "short": "실업률", "unit": "%", "years": 25, "layer": "후행", "good": "down" },
+    { "id": "gdp_growth", "source": "fred", "series": "A191RL1Q225SBEA", "transform": "none", "title": "미국 실질 GDP 성장률 (전기비 연율)", "short": "GDP 성장률", "unit": "%", "threshold": { "value": 0, "label": "0선" }, "years": 25, "layer": "후행", "good": "up" },
+    { "id": "cpi_yoy", "source": "fred", "series": "CPIAUCSL", "transform": "yoy", "title": "미국 CPI (전년동월비)", "short": "CPI YoY", "unit": "%", "threshold": { "value": 2, "label": "연준 목표 2%" }, "years": 25, "layer": "후행", "good": "down" },
+    { "id": "fedfunds", "source": "fred", "series": "FEDFUNDS", "transform": "none", "title": "미국 기준금리 (실효 FFR)", "short": "기준금리 FFR", "unit": "%", "years": 25, "layer": "후행", "good": "none" },
+    { "id": "kospi", "source": "yahoo", "series": "^KS11", "transform": "none", "title": "KOSPI", "short": "KOSPI", "unit": "pt", "years": 25, "layer": "시장", "good": "up" },
+    { "id": "usdkrw", "source": "fred", "series": "DEXKOUS", "transform": "none", "title": "원/달러 환율", "short": "원/달러", "unit": "원", "years": 25, "layer": "시장", "good": "down" },
+    { "id": "dollar_idx", "source": "fred", "series": "DTWEXBGS", "transform": "none", "title": "달러인덱스 (광의 실효)", "short": "달러인덱스", "unit": "", "years": 20, "layer": "시장", "good": "none" },
+    { "id": "rs_growth", "kind": "ratio", "num": { "source": "yahoo", "series": "QQQ" }, "den": { "source": "yahoo", "series": "SPY" }, "title": "성장주 상대강도 (QQQ/SPY, 구간초=100)", "short": "성장주 RS (QQQ/SPY)", "unit": "", "years": 10, "layer": "시장", "good": "none" },
+    { "id": "rs_small", "kind": "ratio", "num": { "source": "yahoo", "series": "IWM" }, "den": { "source": "yahoo", "series": "SPY" }, "title": "중소형주 상대강도 (IWM/SPY, 구간초=100)", "short": "중소형 RS (IWM/SPY)", "unit": "", "years": 10, "layer": "시장", "good": "none" },
+    { "id": "rs_korea", "kind": "ratio", "num": { "source": "yahoo", "series": "^KS11" }, "den": { "source": "yahoo", "series": "SPY" }, "title": "한국 상대강도 (KOSPI/SPY, 구간초=100)", "short": "한국 RS (KOSPI/SPY)", "unit": "", "years": 10, "layer": "시장", "good": "none" }
+  ]
+}
