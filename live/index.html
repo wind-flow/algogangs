@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>알고갱즈 레짐 대시보드 (실시간)</title>
+<meta name="description" content="미국 경기 사이클 레짐을 선행·동행·후행 지표로 읽는 자동 갱신 대시보드. 위폴 프레임 기반."/>
+<link rel="canonical" href="https://wind-flow.github.io/algogangs/live/"/>
+<style>
+:root{--bg:#131316;--surface:#1a1a19;--card:#1e1e22;--border:#2e2e33;--ink:#e8e8e4;--strong:#fff;--muted:#a9a9a2;--accent:#3987e5;--good:#3fa650;--bad:#e66767}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.7;letter-spacing:-.01em;word-break:keep-all}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 18px 80px}
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px;border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:8px}
+h1{font-size:1.5rem;color:var(--strong);margin:0}
+.sub{color:var(--muted);font-size:.85rem}
+.updated{color:var(--accent);font-size:.85rem}
+.hero{margin:24px 0}
+.hero img{width:100%;border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+h2.layer{font-size:1rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin:32px 0 12px;border-bottom:1px solid var(--border);padding-bottom:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;text-decoration:none;color:inherit;transition:border-color .15s}
+.card:hover{border-color:var(--accent)}
+.ct{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+.cv{color:var(--strong);font-size:1.35rem;font-weight:700}
+.cd{font-size:.9rem;font-weight:700;margin-top:2px}
+.cd.good{color:var(--good)} .cd.bad{color:var(--bad)} .cd.neutral{color:var(--muted)}
+footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);color:var(--muted);font-size:.8rem}
+footer a{color:var(--accent)}
+.note{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:12px 16px;font-size:.85rem;color:var(--muted);margin:20px 0}
+</style></head>
+<body><div class="wrap">
+<header>
+  <h1>알고갱즈 레짐 대시보드</h1>
+  <span class="updated">자동 갱신 · 2026-07-11 09:32 KST</span>
+</header>
+<div class="sub">미국 경기 사이클을 선행·동행·후행 지표로 읽습니다. 화살표 색 = 레짐 우호(초록)/비우호(빨강). 카드를 누르면 전체 차트가 열립니다.</div>
+
+<div class="hero"><img src="charts/phase_board.png" alt="경기 사이클 국면 장표"/></div>
+<div class="hero"><img src="charts/dashboard.png" alt="레짐 지표 대시보드"/></div>
+
+<h2 class="layer">선행지표</h2><div class="grid"><a class="card" href="charts/yield_curve.png" target="_blank"><div class="ct">금리차 10Y-2Y</div><div class="cv">0.35%p</div><div class="cd bad">▼ -0.03</div></a><a class="card" href="charts/umcsent.png" target="_blank"><div class="ct">소비자심리</div><div class="cv">44.80</div><div class="cd bad">▼ -5.00</div></a><a class="card" href="charts/hy_spread.png" target="_blank"><div class="ct">하이일드 스프레드</div><div class="cv">2.70%p</div><div class="cd neutral">→ +0.00</div></a><a class="card" href="charts/vix.png" target="_blank"><div class="ct">VIX</div><div class="cv">15.84</div><div class="cd good">▼ -1.06</div></a></div><h2 class="layer">동행지표</h2><div class="grid"><a class="card" href="charts/indpro_yoy.png" target="_blank"><div class="ct">산업생산 YoY</div><div class="cv">1.67%</div><div class="cd good">▲ +0.30</div></a><a class="card" href="charts/retail_yoy.png" target="_blank"><div class="ct">소매판매 YoY</div><div class="cv">6.88%</div><div class="cd good">▲ +2.09</div></a></div><h2 class="layer">후행지표</h2><div class="grid"><a class="card" href="charts/unrate.png" target="_blank"><div class="ct">실업률</div><div class="cv">4.20%</div><div class="cd good">▼ -0.10</div></a><a class="card" href="charts/gdp_growth.png" target="_blank"><div class="ct">GDP 성장률</div><div class="cv">2.10%</div><div class="cd good">▲ +1.60</div></a><a class="card" href="charts/cpi_yoy.png" target="_blank"><div class="ct">CPI YoY</div><div class="cv">4.27%</div><div class="cd bad">▲ +0.32</div></a><a class="card" href="charts/fedfunds.png" target="_blank"><div class="ct">기준금리 FFR</div><div class="cv">3.63%</div><div class="cd neutral">→ +0.00</div></a></div><h2 class="layer">시장·자산</h2><div class="grid"><a class="card" href="charts/kospi.png" target="_blank"><div class="ct">KOSPI</div><div class="cv">7,292pt</div><div class="cd good">▲ +45.12</div></a><a class="card" href="charts/usdkrw.png" target="_blank"><div class="ct">원/달러</div><div class="cv">1,538원</div><div class="cd good">▼ -12.54</div></a><a class="card" href="charts/dollar_idx.png" target="_blank"><div class="ct">달러인덱스</div><div class="cv">120.69</div><div class="cd neutral">▼ -0.46</div></a><a class="card" href="charts/rs_growth.png" target="_blank"><div class="ct">성장주 RS (QQQ/SPY)</div><div class="cv">168.76</div><div class="cd neutral">▼ -0.21</div></a><a class="card" href="charts/rs_small.png" target="_blank"><div class="ct">중소형 RS (IWM/SPY)</div><div class="cv">68.38</div><div class="cd neutral">▼ -0.58</div></a><a class="card" href="charts/rs_korea.png" target="_blank"><div class="ct">한국 RS (KOSPI/SPY)</div><div class="cv">88.67</div><div class="cd neutral">▼ -0.20</div></a></div>
+
+<div class="note">이 페이지는 매일 자동 생성되는 데이터 요약입니다. 특정 종목의 매수·매도, 목표가·손절가를 권유하지 않으며, 투자 판단과 책임은 독자 본인에게 있습니다. 데이터: FRED · Yahoo Finance.</div>
+
+<footer>
+프레임 출처: 위폴 「경기를 보고 투자하라」 · 데이터: <a href="https://fred.stlouisfed.org/">FRED</a>, Yahoo Finance · 차트: 알고갱즈 자동 생성<br/>
+&larr; <a href="../">알고갱즈 홈</a>
+</footer>
+</div></body></html>
