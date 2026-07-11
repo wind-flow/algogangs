@@ -28,6 +28,7 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+          cache-dependency-path: pipeline/requirements-ci.txt
 
       - name: 의존성 설치
         run: pip install -q -r pipeline/requirements-ci.txt
