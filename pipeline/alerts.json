@@ -1,0 +1,9 @@
+{
+  "_comment": "임계 이벤트 규칙. kind: sign_cross(부호 전환) | level_cross(기준선 상향/하향 돌파) | spike(직전 12개월 최저 대비 급등, 사옴 룰 근사). 상태 전환 시에만 1회 알림(재알림 없음, 해제 시 해제 알림).",
+  "rules": [
+    { "id": "yc_sign", "series": "T10Y2Y", "transform": "none", "kind": "sign_state", "label_down": "🔴 장단기 금리차(10Y-2Y) 역전 발생", "label_up": "🟢 장단기 금리차(10Y-2Y) 역전 해소" },
+    { "id": "unrate_sahm", "series": "UNRATE", "transform": "none", "kind": "spike", "window": 12, "delta": 0.5, "label": "🔴 실업률 급등 — 12개월 최저 대비 +0.5%p (사옴 룰 근사)" },
+    { "id": "cpi_5", "series": "CPIAUCSL", "transform": "yoy", "kind": "level_cross", "level": 5.0, "direction": "up", "label": "🔴 CPI 전년동월비 5% 상향 돌파" },
+    { "id": "usdkrw_1600", "series": "DEXKOUS", "transform": "none", "kind": "level_cross", "level": 1600, "direction": "up", "label": "🔴 원/달러 1,600원 상향 돌파" }
+  ]
+}
