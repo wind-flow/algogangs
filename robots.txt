@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /wp-admin/
 
-Sitemap: https://wind-flow.github.io/algogangs/sitemap.xml
+Sitemap: https://algogangz.com/sitemap.xml
